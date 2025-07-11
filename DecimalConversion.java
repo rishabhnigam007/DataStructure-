@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 
 public class DecimalConversion {
@@ -9,30 +8,44 @@ public class DecimalConversion {
         int n = sc.nextInt();
         System.out.println("------------");
         System.out.println("Binary of that number is : ");
-//                StringBuilder sb=new StringBuilder(Integer.toBinaryString(n));
-//                System.out.println(sb);
-//                System.out.println("------------");
-//                System.out.println("Reverse is : ");
+//        StringBuilder sb = new StringBuilder(Integer.toBinaryString(n));
+//        System.out.println(sb);
+//        System.out.println("------------");
+//        System.out.println("Reverse is : ");
 ////                String r=new StringBuilder(sb.reverse()).toString();
-//                String r=sb.reverse().toString();
-//                int rev=new Integer(Integer.parseInt(r));
-//                System.out.println(rev);
-        int rem=0,d=1;
-        int x=n;
-        while (x > 1)
-        {
-            rem=x%2;
-            d=rem+d*10;
-            x=x/2;
-            System.out.println("rem : "+rem+"\t"+" d : "+d+"\t"+" n : "+x);
+//        String r = sb.reverse().toString();
+//        int rev = new Integer(Integer.parseInt(r));
+//        System.out.println(rev);
+
+        // Decimal to Binary as int
+        int rem, binary = 0, place = 1;
+        int x = n;
+        while (x > 0) {
+            rem = x % 2;
+            binary += rem * place;
+            place *= 10;
+            x = x / 2;
         }
-        System.out.println("Binary : "+d);
-        int z=0;
-        while(n!=0)
-        {
-            z=z*10+n%10;
-            n=n/10;
+
+        System.out.println("Binary : " + binary);
+
+        // Reverse logic
+        int z = 0;
+        int temp = binary;
+        while (temp != 0) {
+            z = z * 10 + temp % 10;
+            temp = temp / 10;
         }
-        System.out.println("reverse : "+z);
+        System.out.println("reverse : " + z);
     }
 }
+
+/*
+output:
+Enter number :
+25
+------------
+Binary of that number is :
+Binary : 11001
+reverse : 10011
+ */
